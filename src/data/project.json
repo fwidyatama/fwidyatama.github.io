@@ -1,0 +1,59 @@
+[
+    {
+        "name": "DKT E-health",
+        "description": "DKT E-health is application in health section. This application used by midwife and DKT team. This application available in web and mobile version.",
+        "image": "dkt.png",
+        "techStack": [
+            "Node.js",
+            "Express.js",
+            "Javascript",
+            "Sequelize",
+            "Agenda",
+            "PostgreSQL"
+        ]
+    },
+    {
+        "name": "Talent Management",
+        "description": "This application used for manage employee, assign project to employee, and so on.",
+        "image": "talent-management.png",
+        "techStack": [
+            "Node.js",
+            "Express.js",
+            "Javascript",
+            "MongoDb"
+        ]
+    },
+    {
+        "name": "Buslane",
+        "description": "Buslane is platform for search, compare and book a bus rental in minutes. It connect between Bus operator with buyer",
+        "image": "buslane.png",
+        "techStack": [
+            "Wordpress",
+            "PHP",
+            "Jquery",
+            "Javascript"
+        ]
+    },
+    {
+        "name": "Eregistration",
+        "description": "Application made for internal employee in a company for propose the idea and see the progress",
+        "image": "eregist.png",
+        "techStack": [
+            "Laravel",
+            "PHP",
+            "Jquery",
+            "PostgreSQL"
+        ]
+    },
+    {
+        "name": "Roads",
+        "description": "Application for monitoring product from marketplace, using 3rd party API to integrate with it. ",
+        "image": "roads.png",
+        "techStack": [
+            "Go",
+            "Gorm",
+            "Gin",
+            "PostgreSQL"
+        ]
+    }
+]
