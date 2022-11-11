@@ -37,7 +37,6 @@
                 mb-4
                 text-justify
                 w-full
-                sm:w-4/5
               "
             >
               {{ project.description }}
@@ -67,13 +66,13 @@
               </div>
             </div>
           </div>
-          <div class="flex mr-0 mt-2 mb-10 sm:mb-0 sm:mr-16 w-full">
+          <!-- <div class="flex mr-0 mt-2 mb-10 sm:mb-0 sm:mr-16 w-full">
             <img
               :src="getImageUrl(project.image)"
               :alt="project.name"
               class="rounded px-3 sm:w-84 sm:h-56 object-cover mx-auto"
             />
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
