@@ -25,12 +25,12 @@ const Navigation = ({ isScrolled }: NavigationProps) => {
     >
       <div className="container-custom px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Minimal logo - just initials or name */}
+          {/* Minimal logo - code symbol */}
           <a
             href="#"
-            className="font-mono text-sm font-semibold text-foreground hover:text-primary transition-colors tracking-wider"
+            className="font-mono text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            FW
+            &lt;/&gt;
           </a>
 
           {/* Desktop Navigation - minimal, brutalist */}
