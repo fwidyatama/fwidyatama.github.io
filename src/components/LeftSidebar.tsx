@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { Github, Linkedin, Mail, MapPin, Clock } from 'lucide-react'
 
 const NAV_ITEMS = [
-  { label: 'home', href: '#', active: true },
-  { label: 'about', href: '#about' },
-  { label: 'experience', href: '#experience' },
-  { label: 'writing', href: '#' },
+  { label: 'home', href: '/' },
+  { label: 'experience', href: '/#experience' },
+  { label: 'writing', href: '/notes' },
   { label: 'til', href: '#' },
   { label: 'uses', href: '#' },
   { label: 'resume', href: '#' },
@@ -29,23 +29,36 @@ function useTheme() {
 
 const muted = 'hsl(var(--muted-foreground))'
 const fg = 'hsl(var(--foreground))'
+const accent = 'hsl(var(--accent))'
 
 export default function LeftSidebar() {
   const { dark, toggle } = useTheme()
+  const location = useLocation()
+
+  function isActive(href: string) {
+    if (href === '/') return location.pathname === '/'
+    return location.pathname.startsWith(href.replace('/#', '/'))
+  }
 
   return (
     <aside className="sidebar-left">
-      <div style={{ fontWeight: 600, fontSize: '0.95rem', color: fg, letterSpacing: '-0.01em' }}>
+      <Link to="/" style={{ fontWeight: 600, fontSize: '0.95rem', color: fg, letterSpacing: '-0.01em', textDecoration: 'none' }}>
         fwidyatama
-      </div>
+      </Link>
 
       <nav style={{ marginTop: '1.75rem' }}>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {NAV_ITEMS.map((item) => (
             <li key={item.label}>
-              <a href={item.href} className={`nav-item${item.active ? ' active' : ''}`}>
+              <Link
+                to={item.href}
+                className="nav-item"
+                style={{ color: isActive(item.href) ? accent : muted }}
+                onMouseEnter={e => { if (!isActive(item.href)) e.currentTarget.style.color = fg }}
+                onMouseLeave={e => { e.currentTarget.style.color = isActive(item.href) ? accent : muted }}
+              >
                 /{item.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

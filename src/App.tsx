@@ -3,6 +3,8 @@ import LeftSidebar from './components/LeftSidebar'
 import MainContent from './components/MainContent'
 import RightSidebar from './components/RightSidebar'
 import NotesPage from './components/Notes'
+import NotesListPage from './pages/NotesListPage'
+import NoteDetailPage from './pages/NoteDetailPage'
 
 function HomePage() {
   return (
@@ -20,6 +22,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/notes" element={<NotesListPage />} />
+      <Route path="/notes/:id" element={<NoteDetailPage />} />
       <Route path="/w" element={<NotesPage />} />
     </Routes>
   )
