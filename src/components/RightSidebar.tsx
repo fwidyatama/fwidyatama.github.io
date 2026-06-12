@@ -6,7 +6,7 @@ export default function RightSidebar() {
       <span className="section-label">Currently</span>
       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {CURRENTLY.map((item) => (
-          <li key={item} style={{ fontSize: '0.75rem', color: 'hsl(var(--foreground))', lineHeight: 1.8 }}>
+          <li key={item} style={{ fontSize: '0.8rem', color: 'hsl(var(--foreground))', lineHeight: 1.85 }}>
             → {item}
           </li>
         ))}
@@ -17,7 +17,7 @@ export default function RightSidebar() {
       <span className="section-label">Tech Stack</span>
       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {TECH_STACK.map((line) => (
-          <li key={line} style={{ fontSize: '0.72rem', color: 'hsl(var(--muted-foreground))', lineHeight: 1.9 }}>
+          <li key={line} style={{ fontSize: '0.78rem', color: 'hsl(var(--muted-foreground))', lineHeight: 1.9 }}>
             {line}
           </li>
         ))}

@@ -5,12 +5,6 @@ export interface ExperienceItem {
   description: string
 }
 
-export interface ProjectItem {
-  name: string
-  description: string
-  status: 'In Progress' | 'Active'
-}
-
 export interface NoteItem {
   date: string
   title: string
@@ -18,20 +12,48 @@ export interface NoteItem {
 }
 
 export const EXPERIENCE: ExperienceItem[] = [
-  { yearRange: '2024–Present', company: 'SmartM2M', role: 'Full Stack Developer', description: 'Working on core platform services' },
-  { yearRange: '2023–2024', company: 'Mekari', role: 'Full Stack Developer', description: 'Developer experience and system scalability' },
-  { yearRange: '2023', company: 'IDN Media', role: 'Backend Engineer', description: 'High traffic systems for content and community platform' },
-  { yearRange: '2023', company: 'Style Theory', role: 'Backend Engineer', description: 'E-commerce platform and internal tooling' },
-  { yearRange: '2022', company: 'Docheck', role: 'Backend Engineer', description: 'Backend services' },
-  { yearRange: '2021', company: 'Beeso Studio', role: 'Frontend Engineer', description: 'Frontend systems' },
-  { yearRange: '2020–2022', company: 'BTS.ID', role: 'Backend Engineer', description: 'Backend systems' },
-]
-
-export const PROJECTS: ProjectItem[] = [
-  { name: 'chit-chat-service', description: 'A modular chat service with Go, gRPC, and Redis Stream', status: 'In Progress' },
-  { name: 'til', description: 'A collection of my daily learnings and notes', status: 'Active' },
-  { name: 'infra-sandbox', description: 'Playground for exploring infra, networking, and distributed systems', status: 'In Progress' },
-  { name: 'block-explorer', description: 'Simple blockchain explorer for learning purposes', status: 'In Progress' },
+  {
+    yearRange: '2024–Present',
+    company: 'SmartM2M',
+    role: 'Full Stack Developer',
+    description: 'Building AI-driven SOC platform, offensive security tools with LLMs, and blockchain infrastructure (Hyperledger Besu/Fabric)',
+  },
+  {
+    yearRange: '2023–2024',
+    company: 'Mekari',
+    role: 'Full Stack Developer',
+    description: 'Led Rails→Go migration, built internal SDK for 3rd-party API integrations',
+  },
+  {
+    yearRange: '2023',
+    company: 'IDN Media',
+    role: 'Backend Engineer',
+    description: 'Built microservices for IDN Gold currency integration with external platforms',
+  },
+  {
+    yearRange: '2023',
+    company: 'Style Theory',
+    role: 'Backend Engineer',
+    description: 'Developed logistics provider integrations and service version monitoring tools',
+  },
+  {
+    yearRange: '2022',
+    company: 'Docheck',
+    role: 'Backend Engineer',
+    description: 'Implemented features, optimized queries, mentored intern team (contract)',
+  },
+  {
+    yearRange: '2021',
+    company: 'Beeso Studio',
+    role: 'Frontend Engineer',
+    description: 'Built web-based bus booking platform with WordPress, PHP, and JavaScript',
+  },
+  {
+    yearRange: '2020–2022',
+    company: 'BTS.ID',
+    role: 'Backend Engineer',
+    description: 'Delivered 7 client projects across fintech, healthcare, and agriculture',
+  },
 ]
 
 export const NOTES_PREVIEW: NoteItem[] = [
@@ -49,10 +71,10 @@ export const CURRENTLY: string[] = [
 ]
 
 export const TECH_STACK: string[] = [
-  'Go, Java, PHP, TypeScript',
-  'PostgreSQL, Redis, Kafka',
-  'Docker, Kubernetes',
-  'AWS, GCP, Terraform',
-  'Elasticsearch, Prometheus',
-  'and more...',
+  'Go, JavaScript, TypeScript',
+  'REST APIs, Microservices, gRPC',
+  'MySQL, PostgreSQL, Redis',
+  'Docker, Git, AWS, GCP, CI/CD',
+  'Kafka, RabbitMQ, MQTT',
+  'LLMs, Hyperledger, Ethereum',
 ]
