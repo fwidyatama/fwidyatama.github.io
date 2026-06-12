@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Github, Linkedin, Mail, MapPin, Clock, Sun, Moon } from 'lucide-react'
+import { Github, Linkedin, Mail, MapPin, Clock } from 'lucide-react'
 
 const NAV_ITEMS = [
   { label: 'home', href: '#', active: true },
@@ -14,7 +14,9 @@ const NAV_ITEMS = [
 function useTheme() {
   const [dark, setDark] = useState(() => {
     if (typeof window === 'undefined') return false
-    return localStorage.getItem('theme') === 'dark'
+    const stored = localStorage.getItem('theme')
+    if (stored) return stored === 'dark'
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
   })
 
   useEffect(() => {
@@ -25,12 +27,15 @@ function useTheme() {
   return { dark, toggle: () => setDark(d => !d) }
 }
 
+const muted = 'hsl(var(--muted-foreground))'
+const fg = 'hsl(var(--foreground))'
+
 export default function LeftSidebar() {
   const { dark, toggle } = useTheme()
 
   return (
     <aside className="sidebar-left">
-      <div style={{ fontWeight: 700, fontSize: '1rem', color: 'hsl(var(--foreground))' }}>
+      <div style={{ fontWeight: 600, fontSize: '0.95rem', color: fg, letterSpacing: '-0.01em' }}>
         fwidyatama
       </div>
 
@@ -38,10 +43,7 @@ export default function LeftSidebar() {
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {NAV_ITEMS.map((item) => (
             <li key={item.label}>
-              <a
-                href={item.href}
-                className={`nav-item${item.active ? ' active' : ''}`}
-              >
+              <a href={item.href} className={`nav-item${item.active ? ' active' : ''}`}>
                 /{item.label}
               </a>
             </li>
@@ -49,65 +51,43 @@ export default function LeftSidebar() {
         </ul>
       </nav>
 
-      <p style={{
-        fontSize: '0.8rem',
-        color: 'hsl(var(--muted-foreground))',
-        marginTop: '1.75rem',
-        lineHeight: 1.55,
-      }}>
+      <p style={{ fontSize: '0.82rem', color: muted, marginTop: '1.75rem', lineHeight: 1.6 }}>
         Backend engineer building systems and learning in public.
       </p>
 
       <div style={{ marginTop: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.78rem', color: 'hsl(var(--muted-foreground))' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.8rem', color: muted }}>
           <MapPin size={13} />
           Bandung, Indonesia
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.78rem', color: 'hsl(var(--muted-foreground))' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.8rem', color: muted }}>
           <Clock size={13} />
           UTC+7
         </div>
       </div>
 
       <div style={{ marginTop: 'auto', paddingTop: '1.75rem', display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
-        <a
-          href="https://github.com/fwidyatama"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub"
-          style={{ color: 'hsl(var(--muted-foreground))', transition: 'color 0.15s' }}
-          onMouseEnter={e => (e.currentTarget.style.color = 'hsl(var(--foreground))')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'hsl(var(--muted-foreground))')}
-        >
+        <a href="https://github.com/fwidyatama" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+          style={{ color: muted, transition: 'color 0.15s' }}
+          onMouseEnter={e => (e.currentTarget.style.color = fg)}
+          onMouseLeave={e => (e.currentTarget.style.color = muted)}>
           <Github size={16} />
         </a>
-        <a
-          href="https://linkedin.com/in/faridwidyatama"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn"
-          style={{ color: 'hsl(var(--muted-foreground))', transition: 'color 0.15s' }}
-          onMouseEnter={e => (e.currentTarget.style.color = 'hsl(var(--foreground))')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'hsl(var(--muted-foreground))')}
-        >
+        <a href="https://linkedin.com/in/faridwidyatama" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+          style={{ color: muted, transition: 'color 0.15s' }}
+          onMouseEnter={e => (e.currentTarget.style.color = fg)}
+          onMouseLeave={e => (e.currentTarget.style.color = muted)}>
           <Linkedin size={16} />
         </a>
-        <a
-          href="mailto:faridwidyatama12@gmail.com"
-          aria-label="Email"
-          style={{ color: 'hsl(var(--muted-foreground))', transition: 'color 0.15s' }}
-          onMouseEnter={e => (e.currentTarget.style.color = 'hsl(var(--foreground))')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'hsl(var(--muted-foreground))')}
-        >
+        <a href="mailto:faridwidyatama12@gmail.com" aria-label="Email"
+          style={{ color: muted, transition: 'color 0.15s' }}
+          onMouseEnter={e => (e.currentTarget.style.color = fg)}
+          onMouseLeave={e => (e.currentTarget.style.color = muted)}>
           <Mail size={16} />
         </a>
-        <button
-          onClick={toggle}
-          className="theme-toggle"
-          aria-label="Toggle dark mode"
-          style={{ marginLeft: 'auto' }}
-        >
-          {dark ? <Sun size={15} /> : <Moon size={15} />}
+        <button onClick={toggle} className="theme-toggle mono" aria-label="Toggle theme"
+          style={{ marginLeft: 'auto' }}>
+          {dark ? 'light' : 'dark'}
         </button>
       </div>
     </aside>

@@ -35,9 +35,9 @@ export default function MainContent() {
       <div>
         {NOTES_PREVIEW.map((note) => (
           <div key={note.title} className="table-row" style={{ gridTemplateColumns: '120px 1fr auto' }}>
-            <span style={{ color: muted, whiteSpace: 'nowrap' }}>{note.date}</span>
+            <span className="mono" style={{ color: muted, whiteSpace: 'nowrap', fontSize: '0.8rem' }}>{note.date}</span>
             <span style={{ color: fg }}>{note.title}</span>
-            <span style={{ color: muted }}>{note.tags.map(t => `#${t}`).join(' ')}</span>
+            <span className="mono" style={{ color: muted, fontSize: '0.8rem' }}>{note.tags.map(t => `#${t}`).join(' ')}</span>
           </div>
         ))}
       </div>
@@ -49,7 +49,7 @@ export default function MainContent() {
       <div id="experience">
         {EXPERIENCE.map((exp) => (
           <div key={`${exp.company}-${exp.yearRange}`} className="table-row" style={{ gridTemplateColumns: '90px 130px 1fr' }}>
-            <span style={{ color: muted, whiteSpace: 'nowrap' }}>{exp.yearRange}</span>
+            <span className="mono" style={{ color: muted, whiteSpace: 'nowrap', fontSize: '0.8rem' }}>{exp.yearRange}</span>
             <span style={{ fontWeight: 600, color: fg }}>{exp.company}</span>
             <span style={{ color: muted }}>{exp.role} — {exp.description}</span>
           </div>
