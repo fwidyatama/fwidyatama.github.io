@@ -1,4 +1,4 @@
-import { EXPERIENCE, PROJECTS, NOTES_PREVIEW } from '../data/content'
+import { EXPERIENCE, NOTES_PREVIEW } from '../data/content'
 
 const muted = 'hsl(var(--muted-foreground))'
 const fg = 'hsl(var(--foreground))'
@@ -38,30 +38,6 @@ export default function MainContent() {
             <span style={{ color: muted, whiteSpace: 'nowrap' }}>{note.date}</span>
             <span style={{ color: fg }}>{note.title}</span>
             <span style={{ color: muted }}>{note.tags.map(t => `#${t}`).join(' ')}</span>
-          </div>
-        ))}
-      </div>
-
-      <hr className="divider" />
-
-      {/* Projects */}
-      <SectionHeader title="Projects" />
-      <div>
-        {PROJECTS.map((project) => (
-          <div key={project.name} className="table-row" style={{ gridTemplateColumns: '16px 1fr auto' }}>
-            <span style={{
-              display: 'inline-block',
-              width: 6,
-              height: 6,
-              background: muted,
-              borderRadius: 2,
-              alignSelf: 'center',
-            }} />
-            <span>
-              <span style={{ fontWeight: 600, color: fg }}>{project.name}</span>
-              <span style={{ color: muted }}> — {project.description}</span>
-            </span>
-            <span className="status-badge">{project.status}</span>
           </div>
         ))}
       </div>
