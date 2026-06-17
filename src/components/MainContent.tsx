@@ -1,21 +1,12 @@
-import { Link } from 'react-router-dom'
-import { EXPERIENCE, NOTES_PREVIEW } from '../data/content'
+import { EXPERIENCE } from '../data/content'
 
 const muted = 'hsl(var(--muted-foreground))'
 const fg = 'hsl(var(--foreground))'
 
-function SectionHeader({ title, href }: { title: string; href?: string }) {
+function SectionHeader({ title }: { title: string }) {
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.25rem' }}>
       <span className="section-label" style={{ marginBottom: 0 }}>{title}</span>
-      {href && (
-        <Link to={href} style={{ fontSize: '0.75rem', color: muted, textDecoration: 'none' }}
-          onMouseEnter={e => (e.currentTarget.style.textDecoration = 'underline')}
-          onMouseLeave={e => (e.currentTarget.style.textDecoration = 'none')}
-        >
-          View all →
-        </Link>
-      )}
     </div>
   )
 }
@@ -30,20 +21,6 @@ export default function MainContent() {
         Backend engineer with 6 years of experience across cybersecurity, fintech, and media.
         Strong in Go-based microservices, distributed systems, and integrating AI/LLMs and blockchain.
       </p>
-
-      <hr className="divider" />
-
-      {/* Recent Notes */}
-      <SectionHeader title="Recent Notes" href="/notes" />
-      <div>
-        {NOTES_PREVIEW.map((note) => (
-          <div key={note.title} className="table-row" style={{ gridTemplateColumns: '120px 1fr auto' }}>
-            <span className="mono" style={{ color: muted, whiteSpace: 'nowrap', fontSize: '0.8rem' }}>{note.date}</span>
-            <span style={{ color: fg }}>{note.title}</span>
-            <span className="mono" style={{ color: muted, fontSize: '0.8rem' }}>{note.tags.map(t => `#${t}`).join(' ')}</span>
-          </div>
-        ))}
-      </div>
 
       <hr className="divider" />
 
